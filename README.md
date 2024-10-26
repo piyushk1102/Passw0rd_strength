@@ -1,0 +1,1 @@
+A Password Strength Analyzer and Generator website helps users create and assess secure passwords. The analyzer evaluates password strength based on length, complexity, and uniqueness, giving instant feedback. The generator produces strong, random passwords with customizable options, promoting secure password practices for enhanced online safety.
