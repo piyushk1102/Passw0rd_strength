@@ -1,0 +1,150 @@
+/* General Styling */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f0f0f5;
+    margin: 0;
+    padding: 40px;
+    color: #333;
+}
+
+h1, h2 {
+    font-family: 'Poppins', sans-serif;
+    color: #4CAF50;
+    text-align: center;
+}
+
+/* Container */
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Forms */
+form {
+    margin-bottom: 30px;
+}
+
+input[type="password"], input[type="number"] {
+    width: 100%;
+    padding: 12px 15px;
+    margin: 10px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-sizing: border-box;
+    transition: border 0.3s ease;
+}
+
+input:focus {
+    border: 1px solid #4CAF50;
+    outline: none;
+}
+
+/* Buttons */
+button {
+    width: 100%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+/* Checkbox Group Styling */
+.checkbox-group label {
+    display: block;
+    margin: 8px 0;
+}
+
+.checkbox-group input {
+    margin-right: 8px;
+}
+
+/* Feedback and Results Styling */
+h3 {
+    color: #333;
+    margin-bottom: 10px;
+}
+
+p {
+    margin: 5px 0;
+    color: #555;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    color: #555;
+}
+
+ul li {
+    background-color: #f4f4f4;
+    margin: 5px 0;
+    padding: 8px 12px;
+    border-radius: 8px;
+}
+
+/* Generated Password */
+.generated-password {
+    font-size: 18px;
+    background-color: #f4f4f4;
+    padding: 10px;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+/* Media Queries for Mobile */
+@media (max-width: 768px) {
+    body {
+        padding: 20px;
+    }
+
+    .container {
+        padding: 20px;
+    }
+
+    button {
+        padding: 10px;
+    }
+}
+/* Strength Bar */
+.strength-bar {
+    width: 100%;
+    background-color: #ddd;
+    height: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.strength-bar .bar {
+    height: 100%;
+    border-radius: 5px;
+    transition: width 0.3s ease;
+}
+
+/* Copy Button */
+.copy-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #4CAF50;
+    font-size: 16px;
+    margin-left: 10px;
+}
+
+.copy-btn:hover {
+    color: #45a049;
+}

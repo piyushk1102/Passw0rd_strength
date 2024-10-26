@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Strength Analyzer & Generator</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&family=Roboto&display=swap" rel="stylesheet">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="/static/css/style.css">
+
+    <!-- Font Awesome for Copy Icon -->
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Password Strength Analyzer & Generator</h1>
+
+        <h2>Analyze Password Strength</h2>
+        <form action="/check_password" method="POST">
+            <label for="password">Enter Password:</label>
+            <input type="password" id="password" name="password" required>
+            <button type="button" id="togglePassword">Show</button>
+            <button type="submit">Check Strength</button>
+        </form>
+
+        {% if password %}
+        <h3>Results for Password: {{ password }}</h3>
+        
+        <!-- Password Strength Bar -->
+        <div class="strength-bar">
+            <div class="bar" style="width: {{ strength * 20 }}%; background-color: {{ 'red' if strength <= 2 else 'orange' if strength == 3 else 'green' }};"></div>
+        </div>
+        
+        <p>Strength: {{ strength }} / 5</p>
+        <p>Entropy: {{ entropy }} bits</p>
+        <ul>
+            {% for fb in feedback %}
+            <li>{{ fb }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+
+        <h2>Generate a Strong Password</h2>
+        <form action="/generate_password" method="POST">
+            <label for="length">Length:</label>
+            <input type="number" id="length" name="length" min="8" value="12" required>
+
+            <div class="checkbox-group">
+                <label>
+                    <input type="checkbox" name="uppercase" checked> Include Uppercase Letters
+                </label>
+                <label>
+                    <input type="checkbox" name="digits" checked> Include Digits
+                </label>
+                <label>
+                    <input type="checkbox" name="special" checked> Include Special Characters
+                </label>
+            </div>
+
+            <button type="submit">Generate Password</button>
+        </form>
+
+        {% if generated_password %}
+        <h3>Generated Password:</h3>
+        <div class="generated-password">
+            {{ generated_password }}
+        </div>
+        {% endif %}
+
+        <!-- Password History -->
+        {% if password_history %}
+        <h2>Password History</h2>
+        <ul>
+            {% for pwd in password_history %}
+            <li>
+                {{ pwd }}
+                <button class="copy-btn" data-password="{{ pwd }}">
+                    <i class="fas fa-copy"></i> Copy
+                </button>
+            </li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    </div>
+
+    <script>
+        // Toggle Password Visibility
+        const togglePassword = document.getElementById('togglePassword');
+        const passwordField = document.getElementById('password');
+        
+        togglePassword.addEventListener('click', function () {
+            const type = passwordField.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordField.setAttribute('type', type);
+            this.textContent = type === 'password' ? 'Show' : 'Hide';
+        });
+
+        // Copy Password to Clipboard
+        const copyButtons = document.querySelectorAll('.copy-btn');
+        copyButtons.forEach(button => {
+            button.addEventListener('click', function () {
+                const password = this.getAttribute('data-password');
+                navigator.clipboard.writeText(password).then(() => {
+                    alert('Password copied to clipboard');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
